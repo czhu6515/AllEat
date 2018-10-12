@@ -1,0 +1,32 @@
+{
+  "name": "all-eat",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/czhu6515/AllEat.git"
+  },
+  "keywords": [
+    "don't",
+    "eat",
+    "alone",
+    "all",
+    "eat",
+    "food",
+    "social",
+    "fun",
+    "explore",
+    "new",
+    "exciting"
+  ],
+  "author": "Isaac Curtiss, Andrew Ensenat, and Chenyu Zhu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/czhu6515/AllEat/issues"
+  },
+  "homepage": "https://github.com/czhu6515/AllEat#readme"
+}
