@@ -28,5 +28,9 @@
   "bugs": {
     "url": "https://github.com/czhu6515/AllEat/issues"
   },
-  "homepage": "https://github.com/czhu6515/AllEat#readme"
+  "homepage": "https://github.com/czhu6515/AllEat#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.4"
+  }
 }
