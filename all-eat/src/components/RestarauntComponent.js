@@ -2,11 +2,13 @@
 //restaurant list 
 
 import React, { Component } from "react";
+import styles from '../CSS/RestaurantListComponent.css';
+
 
 class RestarantComponent extends Component {
   render() {
     return (
-      <div className="restaurant">
+      <div className="rest-item">
         <p className="rest-name">Name: {this.props.restaurantProp.name}</p>
         <p className="rest-address">
           Address: {this.props.restaurantProp.vicinity}
@@ -22,3 +24,4 @@ class RestarantComponent extends Component {
 }
 
 export default RestarantComponent;
+

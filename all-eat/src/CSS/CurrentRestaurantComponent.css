@@ -1,0 +1,15 @@
+.child-current {
+    display: inline-flex;
+    flex-direction: column;
+
+}
+
+.current-rest{
+    display: inline-flex;
+    flex-direction: column;
+}
+
+div {
+    display: inline-flex;
+    flex-direction: row;
+}
