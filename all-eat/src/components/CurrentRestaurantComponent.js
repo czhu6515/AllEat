@@ -3,6 +3,7 @@
 
 import React, { Component } from "react";
 import axios from "axios";
+import styles from '../CSS/CurrentRestaurantComponent.css';
 
 class CurrentRestaurantComponent extends Component {
   // async getPhoto() {
@@ -15,14 +16,22 @@ class CurrentRestaurantComponent extends Component {
 
   render() {
     return (
+
       <div className="current-rest">
-        <h1>This is the Current Restaurant</h1>
-        <p>Name: {this.props.restaurantProp.name}</p>
-        <p>
-          {console.log(this.props.restaurantProp.photos)}
-          {/* Photo: <img src={this.getPhoto()} /> */}
-        </p>
+
+        <div className="child-current">
+          <h1>This is the Current Restaurant</h1>
+          <p>Name: {this.props.restaurantProp.name}</p>
+          <p>
+            {console.log(this.props.restaurantProp.photos)}
+            {/* Photo: <img src={this.getPhoto()} /> */}
+          </p>
       </div>
+
+      </div>
+
+
+
     );
   }
 }
