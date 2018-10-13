@@ -1,3 +1,6 @@
+//this is a sample GET Request for data 
+//this is simply for testing purposes so we do not all 
+//use up our API requests(that require our key) within a few hours 
 export const data = [
   {
     geometry: {
