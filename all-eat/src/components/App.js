@@ -1,11 +1,22 @@
-import React, {Component} from 'react'
+import React, { Component } from "react";
 
 class App extends Component {
-  render(){
-    return(
-      <h1>Best App Ever!</h1>
-    )
+  constructor() {
+    super();
+    this.state = { 
+      retaurants: [],
+      currentRestaurant={} 
+    };
+  }
+
+  async componentDidMount() {
+  
+  }
+
+
+  render() {
+    return <h1>Best App Ever!</h1>;
   }
 }
 
-export default App
+export default App;
