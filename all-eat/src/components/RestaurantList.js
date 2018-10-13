@@ -1,8 +1,15 @@
 import React, { Component } from "react";
+import Restaurant from "./Restaraunt";
 
 class RestaurantList extends Component {
   render() {
-    return <h1>Best RestaurantList Ever!</h1>;
+    return (
+      <div>
+        {this.props.restaurants.map(function(e, i) {
+          return <Restaurant restaurant={e} key={`restInd${i}`} />;
+        })}
+      </div>
+    );
   }
 }
 
