@@ -1,7 +1,8 @@
+//this is the main page that contains the app
 import React, { Component } from "react";
 import { data } from "../firstRequest.js";
-import RestaurantList from "./RestaurantList";
-import CurrentRestaurant from "./CurrentRestaurant";
+import RestaurantListComponent from "./RestaurantListComponent";
+import CurrentRestaurantComponent from "./CurrentRestaurantComponent";
 
 class App extends Component {
   constructor() {
@@ -23,11 +24,12 @@ class App extends Component {
   render() {
     return (
       <div id="main">
-        <RestaurantList restaurants={this.state.restaurants} />
-        <CurrentRestaurant restaurant={this.state.currentRestaurant} />
+        <RestaurantListComponent restaurantsProp={this.state.restaurants} />
+        <CurrentRestaurantComponent restaurantProp={this.state.currentRestaurant} />
       </div>
     );
   }
 }
 
 export default App;
+
