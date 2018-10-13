@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { data } from "../firstRequest.js";
 import RestaurantListComponent from "./RestaurantListComponent";
 import CurrentRestaurantComponent from "./CurrentRestaurantComponent";
+import styles from '../CSS/App.css';
 
 class App extends Component {
   constructor() {
@@ -33,12 +34,14 @@ class App extends Component {
   render() {
     return (
       <div id="main">
-        <RestaurantListComponent 
-          restaurantsProp={this.state.restaurants} 
-          onClick={this.handleClick}
-        />
-        <CurrentRestaurantComponent 
-          restaurantProp={this.state.currentRestaurant} />
+        <div className="container">
+          <RestaurantListComponent 
+            restaurantsProp={this.state.restaurants} 
+            onClick={this.handleClick}
+          />
+          <CurrentRestaurantComponent 
+            restaurantProp={this.state.currentRestaurant} />
+        </div>
       </div>
     );
   }

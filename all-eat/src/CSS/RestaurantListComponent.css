@@ -1,0 +1,21 @@
+/* .restuarant-list {
+    display: inline-flex;
+    flex-direction: column;
+} */
+
+div {
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.actual-list {
+    display: inline-flex;
+    flex-direction: column;
+
+
+}
+
+.rest-item{
+    display: inline-flex;
+    flex-direction: column;
+}

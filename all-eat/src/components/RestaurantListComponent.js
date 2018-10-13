@@ -2,6 +2,7 @@
 
 import React, { Component } from "react";
 import Restaurant from "./RestarauntComponent";
+import styles from '../CSS/RestaurantListComponent.css';
 
 class RestaurantListComponent extends Component {
 
@@ -12,12 +13,14 @@ class RestaurantListComponent extends Component {
   render() {
     const {restaurantsProp, onClick} = this.props
     return (
-      <div>
-        {restaurantsProp.map(function(e, i) {
-          return <Restaurant 
-            restaurantProp={e} key={`restInd${i}`} onClick={onClick} />;
-        })}
-      </div>
+      <div className = "restaurant-list">
+        <div className="actual-list">
+          {restaurantsProp.map(function(e, i) {
+            return <Restaurant 
+              restaurantProp={e} key={`restInd${i}`} onClick={onClick} />;
+           })}
+        </div>
+      </div>      
     );
   }
 }
