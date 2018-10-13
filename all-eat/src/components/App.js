@@ -12,26 +12,36 @@ class App extends Component {
       restaurants: [],
       currentRestaurant: {}
     };
+
+    this.handleClick = this.handleClick.bind(this)
   }
 
   async componentDidMount() {
     //TODO Change to axios GET request
     this.setState({
       restaurants: data,
-      currentRestaurant: data[0]
+      currentRestaurant: data[5]
+    });
+  }
+
+  handleClick() {
+    console.log('hello')
+    this.setState({
+      currentRestaurant: data[2]
     });
   }
 
   render() {
     return (
       <div id="main">
-
         <div className="container">
-        <RestaurantListComponent restaurantsProp={this.state.restaurants} />
-        <CurrentRestaurantComponent restaurantProp={this.state.currentRestaurant} />
+          <RestaurantListComponent 
+            restaurantsProp={this.state.restaurants} 
+            onClick={this.handleClick}
+          />
+          <CurrentRestaurantComponent 
+            restaurantProp={this.state.currentRestaurant} />
         </div>
-
-        
       </div>
     );
   }

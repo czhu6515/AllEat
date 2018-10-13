@@ -5,19 +5,22 @@ import Restaurant from "./RestarauntComponent";
 import styles from '../CSS/RestaurantListComponent.css';
 
 class RestaurantListComponent extends Component {
+
+  sayHello = () => {
+    this.props.onClick()
+  }
+
   render() {
+    const {restaurantsProp, onClick} = this.props
     return (
-       <div className = "restaurant-list">
-        
+      <div className = "restaurant-list">
         <div className="actual-list">
-        {this.props.restaurantsProp.map(function(e, i) {
-          return <Restaurant restaurantProp={e} key={` restInd${i} `} />;
-
-          
-        })}
+          {restaurantsProp.map(function(e, i) {
+            return <Restaurant 
+              restaurantProp={e} key={`restInd${i}`} onClick={onClick} />;
+           })}
         </div>
-
-      </div>
+      </div>      
     );
   }
 }
