@@ -4,11 +4,18 @@ import React, { Component } from "react";
 import Restaurant from "./RestarauntComponent";
 
 class RestaurantListComponent extends Component {
+
+  sayHello = () => {
+    this.props.onClick()
+  }
+
   render() {
+    const {restaurantsProp, onClick} = this.props
     return (
       <div>
-        {this.props.restaurantsProp.map(function(e, i) {
-          return <Restaurant restaurantProp={e} key={`restInd${i}`} />;
+        {restaurantsProp.map(function(e, i) {
+          return <Restaurant 
+            restaurantProp={e} key={`restInd${i}`} onClick={onClick} />;
         })}
       </div>
     );
