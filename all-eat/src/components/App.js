@@ -5,31 +5,18 @@ import RestaurantListComponent from "./RestaurantListComponent";
 import CurrentRestaurantComponent from "./CurrentRestaurantComponent";
 import styles from '../CSS/App.css';
 import CssBaseline from '@material-ui/core/CssBaseline'
-import { createMuiTheme } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import {AppBar, Toolbar} from '@material-ui/core'
+import {BrowserRouter as Router, Route, Link} from "react-router-dom"
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: '#757ce8',
-      main: '#3f50b5',
-      dark: '#002884',
-      contrastText: '#fff',
-    },
-    secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
-      contrastText: '#000',
-    },
-  },
-});
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       restaurants: [],
-      currentRestaurant: {}
+      currentRestaurant: {},
+      selected: {}
     };
 
     this.handleClick = this.handleClick.bind(this)
@@ -39,30 +26,42 @@ class App extends Component {
     //TODO Change to axios GET request
     this.setState({
       restaurants: data,
-      currentRestaurant: data[5]
+      currentRestaurant: data[0],
+      
     });
   }
 
   handleClick() {
     console.log('hello')
     this.setState({
-      currentRestaurant: data[2]
+      currentRestaurant: data[Number(window.location.pathname.slice(1))],
+      // selected: data[2]
     });
   }
 
   render() {
     return (
-      <div id="main">
-        <div className="container">
-        <CssBaseline />
-          <RestaurantListComponent 
-            restaurantsProp={this.state.restaurants} 
-            onClick={this.handleClick}
-          />
-          <CurrentRestaurantComponent 
-            restaurantProp={this.state.currentRestaurant} />
-        </div>
-      </div>
+        <Router>
+          <Grid container={true} lg={2} direction={"row"}	>
+            {/* <AppBar>
+            <Toolbar>
+              
+            </Toolbar> */}
+          {/* </AppBar> */}
+            <div id="main">
+              <div className="container">
+              <CssBaseline />
+                <RestaurantListComponent 
+                  restaurantsProp={this.state.restaurants} 
+                  onClick={this.handleClick}
+                />
+                <CurrentRestaurantComponent 
+                  restaurantProp={this.state.currentRestaurant}
+                  selectedRest={this.state.selected} />
+              </div>
+            </div>
+          </Grid>
+        </Router>
     );
   }
 }

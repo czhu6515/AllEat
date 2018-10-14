@@ -11,17 +11,16 @@ class RestarantComponent extends Component {
   //   this.props.handleClick()
   // }
 
-    sayHello = () => {
-      this.props.onClick()
-    }
+  sayHello = () => {
+    this.props.onClick()
+  }
+
 
   render() {
     return (
       <div className="restaurant" onClick={this.sayHello}>
-        {/* <button >CLICK ME</button> */}
-
+        {console.log()}
         <div className="rest-item">
-
           <p className="rest-name">Name: {this.props.restaurantProp.name}</p>
           <p className="rest-address">
             Address: {this.props.restaurantProp.vicinity}
@@ -30,7 +29,7 @@ class RestarantComponent extends Component {
             Price Level: {this.props.restaurantProp.price_level}
           </p>
           <p className="rest-rating">Rating: {this.props.restaurantProp.rating}</p>
-          <hr />
+          
         </div>
       </div>
     );
