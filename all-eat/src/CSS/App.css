@@ -1,7 +1,4 @@
-.container {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
-  overflow-x: hidden;
-  overflow-y: hidden;
+a, a:link, a:visited, a:active {
+  text-decoration: none;
+  color: rgba(8, 86, 138, 0.856);
 }

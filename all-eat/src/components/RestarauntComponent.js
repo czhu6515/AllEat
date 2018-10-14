@@ -1,15 +1,8 @@
 import React, { Component } from "react";
 import styles from '../CSS/Restaurant.css';
-
+import Grid from '@material-ui/core/Grid';
 
 class RestarantComponent extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.props.handleClick = this.props.handleClick.bind(this)
-  // }
-  // userSelection() {
-  //   this.props.handleClick()
-  // }
 
   sayHello = () => {
     this.props.onClick()
@@ -18,20 +11,20 @@ class RestarantComponent extends Component {
 
   render() {
     return (
-      <div className="restaurant" onClick={this.sayHello}>
-        {console.log()}
-        <div className="rest-item">
-          <p className="rest-name">Name: {this.props.restaurantProp.name}</p>
-          <p className="rest-address">
-            Address: {this.props.restaurantProp.vicinity}
-          </p>
-          <p className="rest-price">
-            Price Level: {this.props.restaurantProp.price_level}
-          </p>
-          <p className="rest-rating">Rating: {this.props.restaurantProp.rating}</p>
-          
-        </div>
-      </div>
+      <Grid item={true} onClick={this.sayHello} color={'#FFAB91'}>
+        <h3>
+          {this.props.restaurantProp.name}
+        </h3>
+        <p className="rest-address">
+          {this.props.restaurantProp.vicinity}
+        </p>
+        <p className="rest-price">
+          Price Level: {this.props.restaurantProp.price_level}
+        </p>
+        <p className="rest-rating">
+          Rating: {this.props.restaurantProp.rating}
+        </p>  
+      </Grid>
     );
   }
 }
