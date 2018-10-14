@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from '../CSS/RestaurantListComponent.css';
+import styles from '../CSS/Restaurant.css';
 
 
 class RestarantComponent extends Component {
@@ -17,8 +17,8 @@ class RestarantComponent extends Component {
 
   render() {
     return (
-      <div className="restaurant">
-        <button onClick={this.sayHello}>CLICK ME</button>
+      <div className="restaurant" onClick={this.sayHello}>
+        {/* <button >CLICK ME</button> */}
 
         <div className="rest-item">
 
