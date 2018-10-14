@@ -31,6 +31,8 @@
   "homepage": "https://github.com/czhu6515/AllEat#readme",
   "dependencies": {
     "axios": "^0.18.0",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
   }
 }
