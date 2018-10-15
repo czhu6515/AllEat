@@ -6,10 +6,10 @@ import CurrentRestaurantComponent from "./CurrentRestaurantComponent";
 import Welcome from "./Welcome.js";
 import styles from "../CSS/App.css";
 import Grid from "@material-ui/core/Grid";
-import { AppBar, Toolbar } from "@material-ui/core";
+import AppBar from "./AppBar";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from "axios";
-import ZipFrom from "./ZipForm";
+import ZipForm from "./ZipForm";
 
 class App extends Component {
   constructor() {
@@ -49,7 +49,8 @@ class App extends Component {
   render() {
     return (
       <Grid container={true} lg={2} direction={"column"} justify={"center"}>
-        <ZipFrom />
+        <ZipForm />
+        <AppBar />
         <Router>
           <Grid
             container
