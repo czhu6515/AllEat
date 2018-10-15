@@ -15,6 +15,10 @@ class RestaurantListComponent extends Component {
   }
 
 
+// componentWillReceiveProps(nextProps) {
+//     //if
+// }
+
 
   render() {
     const {restaurantsProp, onClick} = this.props
@@ -22,19 +26,18 @@ class RestaurantListComponent extends Component {
       <Grid alignContent={'center'} spacing={10}>
         <div className = "restaurant-list">
           <div className="actual-list">
-            <Scrollbars 
+            <Scrollbars
             autoHeight
             autoHeightMin={100}
-            autoHeightMax={1000}>
+            autoHeightMax={700}>
               {restaurantsProp.map(function(e, i) {
                 return (
                 <Link to={`${i}`}>
-                
                   <Card raised={true}>
-                    <Restaurant 
-                      restaurantProp={e} 
-                      key={`restInd${i}`} 
-                      onClick={onClick} 
+                    <Restaurant
+                      restaurantProp={e}
+                      key={`restInd${i}`}
+                      onClick={onClick}
                       />
                   </Card>
                 </Link>
@@ -42,7 +45,7 @@ class RestaurantListComponent extends Component {
               })}
             </Scrollbars>
           </div>
-        </div>      
+        </div>
       </Grid>
     );
   }
