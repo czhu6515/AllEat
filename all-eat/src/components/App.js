@@ -9,6 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import { AppBar, Toolbar } from "@material-ui/core";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from "axios";
+import ZipFrom from "./ZipForm";
 
 class App extends Component {
   constructor() {
@@ -48,10 +49,7 @@ class App extends Component {
   render() {
     return (
       <Grid container={true} lg={2} direction={"column"} justify={"center"}>
-        <AppBar>
-          <Toolbar />
-        </AppBar>
-        {/* <Login /> */}
+        <ZipFrom />
         <Router>
           <Grid
             container
