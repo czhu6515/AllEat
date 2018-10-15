@@ -7,6 +7,13 @@ import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography'
 
 const theme = createMuiTheme({
+  typography: {
+    "fontFamily": "\"Pacifico\", \"cursive\", \"Arial\", sans-serif",
+    "fontSize": 14,
+    "fontWeightLight": 300,
+    "fontWeightRegular": 400,
+    "fontWeightMedium": 500
+   },
   palette: {
     primary: {
       light: '#00bfa5',

@@ -3,8 +3,6 @@ import React, { Component } from "react";
 import { data } from "../firstRequest.js";
 import RestaurantListComponent from "./RestaurantListComponent";
 import CurrentRestaurantComponent from "./CurrentRestaurantComponent";
-import Welcome from "./Welcome.js";
-import styles from "../CSS/App.css";
 import Grid from "@material-ui/core/Grid";
 import AppBar from "./AppBar";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -40,22 +38,22 @@ class App extends Component {
     });
   }
 
-  handleClick() {
-    this.setState({
-      currentRestaurant: data[Number(window.location.pathname.slice(1))]
-    });
+  async handleClick() {
+    const currentRestaurant = data[Number(window.location.pathname.slice(1))]
+    await this.setState({currentRestaurant});
+      // currentRestaurant: data[num]
+    console.log(currentRestaurant)
   }
 
   render() {
     return (
-      <Grid container={true} lg={2} direction={"column"} justify={"center"}>
+      <Grid container={true} direction={"column"} justify={"center"}>
         <ZipForm />
         <AppBar />
         <Router>
           <Grid
             container
             item
-            lg={2}
             direction={"row"}
             justify={"center"}
             alignItems={"center"}
