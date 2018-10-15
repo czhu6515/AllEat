@@ -15,7 +15,7 @@ export default class ZipForm extends React.Component {
   //     this.setState({ open: true });
   //   };
 
-  handleClose = () => {
+  handleZipClose = () => {
     this.setState({ open: false });
   };
 
@@ -27,11 +27,14 @@ export default class ZipForm extends React.Component {
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
+          disableBackdropClick={true}
+          disableEscapeKeyDown={true}
         >
           <DialogTitle id="form-dialog-title">Enter Zip Code</DialogTitle>
           <DialogContent>
             <TextField
               autoFocus
+              required
               margin="dense"
               id="zip"
               label="Zip Code"
@@ -40,7 +43,7 @@ export default class ZipForm extends React.Component {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleZipClose} color="primary">
               Let's Go!
             </Button>
           </DialogActions>
