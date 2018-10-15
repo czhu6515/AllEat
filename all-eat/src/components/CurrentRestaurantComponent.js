@@ -1,10 +1,11 @@
-//this is the page that contains the information about 
+//this is the page that contains the information about
 //the user selected restaurant
 
 import React, { Component } from "react";
 import axios from "axios";
 import styles from '../CSS/CurrentRestaurantComponent.css';
 import Card from '@material-ui/core/Card';
+
 
 class CurrentRestaurantComponent extends Component {
 
@@ -27,4 +28,3 @@ class CurrentRestaurantComponent extends Component {
 }
 
 export default CurrentRestaurantComponent;
-
