@@ -51,7 +51,7 @@ class App extends Component {
   changeNo() {
     let num = this.state.notifCounter
     this.setState({notifCounter: ++num})
-
+    console.log('hello')
   }
 
 
@@ -65,7 +65,6 @@ class App extends Component {
       axios.get(`/foo/${formatLoc}`).then(res => {
           let data = res.data.results
           this.setState({restaurants: data})
-          console.log(this.state.restaurants)
       })
 }
 
@@ -97,29 +96,12 @@ getZip = () => {
   render() {
     return (
       <Grid container={true} direction={"column"} justify={"center"}>
-
         <AppBar getZip={this.getZip} count={this.state.notifCounter} />
-
-      
-
         <Router>
-          <Grid
-            container
-            item
-            direction={"row"}
-            justify={"center"}
-            alignItems={"center"}
-          >
-            <Grid item>
-              <RestaurantListComponent
-                restaurantsProp={this.state.restaurants}
-                handleClick={this.changeNo}
-              />
-            </Grid>
-            <Grid item>
-              
-            </Grid>
-          </Grid>
+          <RestaurantListComponent
+            restaurantsProp={this.state.restaurants}
+            changeNo={this.changeNo}
+          />
         </Router>
       </Grid>
     );
