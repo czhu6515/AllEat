@@ -2,8 +2,6 @@
 import React, { Component } from "react";
 import RestaurantListComponent from "./RestaurantListComponent";
 import CurrentRestaurantComponent from "./CurrentRestaurantComponent";
-import Welcome from "./Welcome.js";
-import styles from "../CSS/App.css";
 import Grid from "@material-ui/core/Grid";
 import AppBar from "./AppBar";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -60,6 +58,7 @@ class App extends Component {
 }
 
 
+
 getZip = () => {
     let zip = document.getElementById("input-base").value
     Geocode.setApiKey(`${GID}`)
@@ -82,10 +81,15 @@ getZip = () => {
   //   });
   // }
 
+
   render() {
     return (
       <Grid container={true} direction={"column"} justify={"center"}>
+
         <AppBar getZip={this.getZip} />
+
+        <ZipForm />
+
         <Router>
           <Grid
             container

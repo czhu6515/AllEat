@@ -8,6 +8,13 @@ import Typography from '@material-ui/core/Typography'
 import Geocode from "react-geocode";
 
 const theme = createMuiTheme({
+  typography: {
+    "fontFamily": "\"Pacifico\", \"cursive\", \"Arial\", sans-serif",
+    "fontSize": 14,
+    "fontWeightLight": 300,
+    "fontWeightRegular": 400,
+    "fontWeightMedium": 500
+   },
   palette: {
     primary: {
       light: '#00bfa5',

@@ -5,7 +5,6 @@ import Restaurant from "./RestarauntComponent";
 import { Scrollbars } from "react-custom-scrollbars";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
-import Card from "@material-ui/core/Card";
 
 class RestaurantListComponent extends Component {
   sayHello = () => {
@@ -24,13 +23,13 @@ class RestaurantListComponent extends Component {
           {restaurantsProp.map(function(e, i) {
             return (
               <Link to={`${i}`}>
-                <Card raised={true}>
+                <Grid item>
                   <Restaurant
                     restaurantProp={e}
                     key={`restInd${i}`}
                     onClick={onClick}
                   />
-                </Card>
+                </Grid>
               </Link>
             );
           })}
