@@ -48,7 +48,7 @@ class App extends Component {
       let geoLoc;
       let position = await loadPosition()
       let formatLoc = `${position.coords.latitude},${position.coords.longitude}`
-      this.setState({zip: formatLoc})
+      // this.setState({zip: formatLoc})
       console.log(formatLoc)
       axios.get(`/foo/${formatLoc}`).then(res => {
           let data = res.data.results

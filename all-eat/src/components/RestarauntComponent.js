@@ -10,7 +10,7 @@ class RestarantComponent extends Component {
 
   render() {
     return (
-      <Grid item={true} onClick={this.sayHello} color={"#FFAB91"}>
+      <Grid item={true} color={"#FFAB91"}>
         <h3>{this.props.restaurantProp.name}</h3>
         <p className="rest-address">{this.props.restaurantProp.vicinity}</p>
         <p className="rest-price">
