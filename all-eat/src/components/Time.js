@@ -6,7 +6,13 @@ import Button from '@material-ui/core/Button';
 // 11 12 1 2 3 4 5 6 7 8 9 10
 
 class Time extends Component {
-    
+
+    // changeNo = (e, time, rId) => {
+    //     console.log(e, time, rId);
+    //     // this.props.changeNo()
+    // }
+
+
     timeslot = () => {
         let array = [];
         let tNum = "";
@@ -21,7 +27,13 @@ class Time extends Component {
             else {
                 tNum = `${i -1}:00pm` ;
             }
-            array.push(<Button variant="outlined" size="small" color="primary" onClick={this.props.changeNo}>{tNum}</Button>);
+            let aNum = tNum
+            array.push(<Button key={i}
+                        buttonID={{time:`${tNum}`, rID:this.props.rID}} 
+                        variant="outlined" 
+                        size="small" 
+                        color="primary" 
+                        onClick={ (e)=> this.props.changeNo(aNum, this.props.rID) }>{tNum}</Button>);
         }
         // console.log(array);
         return array;
