@@ -21,7 +21,7 @@ class Time extends Component {
             else {
                 tNum = `${i -1}:00pm` ;
             }
-            array.push(<Button variant="outlined" size="small" color="primary" onClick={this.props.handleClick}>{tNum}</Button>);
+            array.push(<Button variant="outlined" size="small" color="primary" onClick={this.props.changeNo}>{tNum}</Button>);
         }
         // console.log(array);
         return array;

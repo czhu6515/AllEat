@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styles from "../CSS/Restaurant.css";
 import Grid from "@material-ui/core/Grid";
 import Time from './Time';
-import {GID} from '../config';
+import GID from '../config';
 
 class RestarantComponent extends Component {
   sayHello = () => {
@@ -11,7 +11,7 @@ class RestarantComponent extends Component {
 
   render() {
     return (
-      <Grid item={true} color={"#FFAB91"}>
+      <Grid item={true} color={"#FFAB91"} id='restaurant'>
         <h3>{this.props.restaurantProp.name}</h3>
         <p className="rest-address">{this.props.restaurantProp.vicinity}</p>
         <p className="rest-price">
@@ -27,7 +27,7 @@ class RestarantComponent extends Component {
                 : null
             }&key=${GID}`}
           />
-        <Time handleClick={this.props.handleClick}/>
+        <Time changeNo={this.props.changeNo}/>
       </Grid>
     );
   }

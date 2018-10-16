@@ -31,25 +31,24 @@ class RestaurantListComponent extends Component {
   // }
 
   render() {
+    console.log(this.props)
+    let myProps = this.props
+
     // const { restaurantsProp, onClick } = this.props;
     return (
-      <Grid alignContent={"center"} spacing={24}>
+      <Grid alignContent={"center"} spacing={24} id='rest-list-wrapper'>
         <Scrollbars autoHeight autoHeightMin={100} autoHeightMax={500}>
-          <Grid alignContent={"center"} spacing={24} m={2}>
-            {this.props.restaurantsProp.map(function(e, i) {
-              return (
-                <Link to={`${i}`}>
-                  <Grid item xs={12} m={6} >
-                    <Paper><RestaurantComponent
-                      restaurantProp={e}
-                      key={`restInd${i}`}
-                    />
-                    </Paper>
-                  </Grid>
-                </Link>
-              );
-            })}
-            </Grid>
+          {this.props.restaurantsProp.map(function(e, i) {
+            return (
+              <Link to={`${i}`}>
+                <RestaurantComponent
+                  restaurantProp={e}
+                  key={`restID${i}`}
+                  changeNo={myProps.changeNo}
+                />
+              </Link>
+            );
+          })}
         </Scrollbars>
       </Grid>
     );
