@@ -1,7 +1,7 @@
 //this is the main page that contains the app
 import React, { Component } from "react";
 import RestaurantListComponent from "./RestaurantListComponent";
-import CurrentRestaurantComponent from "./CurrentRestaurantComponent";
+
 import Grid from "@material-ui/core/Grid";
 import AppBar from "./AppBar";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -88,7 +88,7 @@ getZip = () => {
 
         <AppBar getZip={this.getZip} />
 
-        <ZipForm />
+      
 
         <Router>
           <Grid
@@ -104,10 +104,7 @@ getZip = () => {
               />
             </Grid>
             <Grid item>
-              <CurrentRestaurantComponent
-                restaurantProp={this.state.currentRestaurant}
-                selectedRest={this.state.selected}
-              />
+              
             </Grid>
           </Grid>
         </Router>

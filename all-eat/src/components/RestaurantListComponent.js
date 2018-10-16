@@ -5,6 +5,7 @@ import Restaurant from "./RestarauntComponent";
 import { Scrollbars } from "react-custom-scrollbars";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
+import Time from './Time';
 
 class RestaurantListComponent extends Component {
   sayHello = () => {
