@@ -10,6 +10,7 @@
     "react": "^16.5.2",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.5.2",
+    "react-geocode": "^0.1.2",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.4"
@@ -20,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "http://localhost:5050",
   "eslintConfig": {
     "extends": "react-app"
   },

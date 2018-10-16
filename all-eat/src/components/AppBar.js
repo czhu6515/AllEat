@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import AppBar from "@material-ui/core/AppBar";
+import AppBar from "@material-ui/core/AppBar"
+import Button from "@material-ui/core/Button"
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
@@ -88,10 +89,20 @@ const styles = theme => ({
 });
 
 class PrimarySearchAppBar extends React.Component {
-  state = {
-    anchorEl: null,
-    mobileMoreAnchorEl: null
-  };
+    constructor() {
+        super()
+        this.state = {
+            anchorEl: null,
+            mobileMoreAnchorEl: null
+        }
+        this.getZip = this.getZip.bind(this)
+    }
+
+
+  getZip = (event) => {
+      event.preventDefault()
+      this.props.getZip()
+  }
 
   handleProfileMenuOpen = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -180,7 +191,7 @@ class PrimarySearchAppBar extends React.Component {
               color="inherit"
               noWrap
             >
-              Meet 'n Eat
+              Meet n Eat
             </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
@@ -188,11 +199,13 @@ class PrimarySearchAppBar extends React.Component {
               </div>
               <InputBase
                 placeholder="New Zip Code..."
+                id= "input-base"
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput
                 }}
               />
+          <Button onClick={this.getZip}>CLICK ME PLEASE</Button>
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
