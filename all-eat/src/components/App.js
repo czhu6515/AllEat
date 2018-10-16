@@ -1,6 +1,5 @@
 //this is the main page that contains the app
 import React, { Component } from "react";
-import { data } from "../firstRequest.js";
 import RestaurantListComponent from "./RestaurantListComponent";
 import CurrentRestaurantComponent from "./CurrentRestaurantComponent";
 import Welcome from "./Welcome.js";
@@ -9,7 +8,29 @@ import Grid from "@material-ui/core/Grid";
 import AppBar from "./AppBar";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from "axios";
-import ZipForm from "./ZipForm";
+import { GID } from "../config"
+import Geocode from 'react-geocode';
+
+
+const loadPosition = async () => {
+    try {
+        const position = await getCurrentPosition();
+        return position
+    }
+    catch (error) {
+        console.log(error);
+    }
+};
+
+const getCurrentPosition = (options = {}) => {
+    return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject, options);
+    });
+};
+
+
+  // let {data} = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${formatLoc}&radius=1500&type=restaurant&key=${GID}`)
+
 
 class App extends Component {
   constructor() {
@@ -17,45 +38,58 @@ class App extends Component {
     this.state = {
       restaurants: [],
       currentRestaurant: {},
-      selected: {}
+      selected: {},
+      zip: ""
     };
 
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
   }
 
   async componentDidMount() {
-    //TODO Change to axios GET request
-    axios
-      .get("https://randomuser.me/api/?results=10&inc=name,registered&nat=fr")
-      .then(json =>
-        json.data.results.map(result => ({
-          name: `${result.name.first} ${result.name.last}`,
-          id: result.registered
-        }))
-      )
-      .then(newData => console.log(newData));
-    this.setState({
-      restaurants: data,
-      currentRestaurant: data[0]
-    });
-  }
+      console.log("lOOK HERE")
+      let geoLoc;
+      let position = await loadPosition()
+      let formatLoc = `${position.coords.latitude},${position.coords.longitude}`
+      this.setState({zip: formatLoc})
+      console.log(formatLoc)
+      axios.get(`/foo/${formatLoc}`).then(res => {
+          let data = res.data.results
+          this.setState({restaurants: data})
+          console.log(this.state.restaurants)
+      })
+}
 
-  handleClick() {
-    this.setState({
-      currentRestaurant: data[Number(window.location.pathname.slice(1))]
-    });
-  }
+
+getZip = () => {
+    let zip = document.getElementById("input-base").value
+    Geocode.setApiKey(`${GID}`)
+    Geocode.fromAddress(`${zip}`).then(
+        response => {
+            let loc = response.results[0].geometry
+            let formatLoc = `${loc.location.lat},${loc.location.lng}`
+            axios.get(`/foo/${formatLoc}`).then(res => {
+                let data = res.data.results
+                this.setState({restaurants: data})
+            })
+        }
+    )
+
+}
+
+  // handleClick() {
+  //   this.setState({
+  //     currentRestaurant: data[Number(window.location.pathname.slice(1))]
+  //   });
+  // }
 
   render() {
     return (
-      <Grid container={true} lg={2} direction={"column"} justify={"center"}>
-        <ZipForm />
-        <AppBar />
+      <Grid container={true} direction={"column"} justify={"center"}>
+        <AppBar getZip={this.getZip} />
         <Router>
           <Grid
             container
             item
-            lg={2}
             direction={"row"}
             justify={"center"}
             alignItems={"center"}
@@ -63,7 +97,6 @@ class App extends Component {
             <Grid item>
               <RestaurantListComponent
                 restaurantsProp={this.state.restaurants}
-                onClick={this.handleClick}
               />
             </Grid>
             <Grid item>
