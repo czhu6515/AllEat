@@ -12,10 +12,10 @@ class Time extends Component {
         let tNum = "";
         for (let i = 0; i < 11; i++){
             
-            if(i = 0){
+            if(i === 0){
                 tNum = '11:00am';
             }
-            else if(i = 1){
+            else if(i === 1){
                 tNum = '12:00pm'
             }
             else {

@@ -1,7 +1,7 @@
 
 const express = require("express");
 const axios = require("axios");
-const api = require("./api");
+
 const app = express();
 // const PORT = process.env.PORT || 5050;
 
@@ -36,5 +36,5 @@ app.get('/movies/:id', async (req, res) => {
 })
 
 app.listen(5050,() => {
-    console.log(`We are listening on port 5000`);
+    console.log(`We are listening on port 5050`);
 });
