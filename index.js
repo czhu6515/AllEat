@@ -3,7 +3,7 @@ const express = require("express");
 const axios = require("axios");
 
 const app = express();
-// const PORT = process.env.PORT || 5050;
+
 
 app.use(express.static(__dirname + "/all-eat/build"));
 
@@ -25,16 +25,7 @@ app.get('/foo/:zip', async (req,res) => {
     }
 })
 
-
-app.get('/movies/:id', async (req, res) => {
-	try {
-		let {data} = await axios.get(`http://swapi.co/api/films/${req.params.id}`);
-		res.json(data);
-	} catch(e) {
-		res.json({'Error': 'Error'});
-	}
-})
-
-app.listen(5050,() => {
+const PORT = process.env.PORT || 5050;
+app.listen(PORT,() => {
     console.log(`We are listening on port 5050`);
 });
