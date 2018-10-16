@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styles from "../CSS/Restaurant.css";
 import Grid from "@material-ui/core/Grid";
+import Time from './Time';
 
 class RestarantComponent extends Component {
   sayHello = () => {
@@ -18,6 +19,14 @@ class RestarantComponent extends Component {
         <p className="rest-rating">
           Rating: {this.props.restaurantProp.rating}
         </p>
+        <img
+            src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${
+              this.props.restaurantProp.photos
+                ? this.props.restaurantProp.photos[0].photo_reference
+                : null
+            }&key=AIzaSyADV91zCNOJP51CkmFbYAekjklYesdQxvY`}
+          />
+        <Time/>
       </Grid>
     );
   }
