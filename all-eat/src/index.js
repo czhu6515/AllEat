@@ -9,7 +9,7 @@ import Geocode from "react-geocode";
 
 const theme = createMuiTheme({
   typography: {
-    "fontFamily": "\"Pacifico\", \"cursive\", \"Arial\", sans-serif",
+    "fontFamily": "\"Roboto\", \"Arial\", sans-serif",
     "fontSize": 14,
     "fontWeightLight": 300,
     "fontWeightRegular": 400,
@@ -23,8 +23,8 @@ const theme = createMuiTheme({
       contrastText: '#fff',
     },
     secondary: {
-      light: '#ff7961',
-      main: '#f44336',
+      light: '#1de9b6',
+      main: '#1de9b6',
       dark: '#0097a7',
       contrastText: '#000',
     },

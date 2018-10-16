@@ -205,8 +205,13 @@ class PrimarySearchAppBar extends React.Component {
                   input: classes.inputInput
                 }}
               />
-          <Button onClick={this.getZip}>CLICK ME PLEASE</Button>
+            
             </div>
+              <Button
+                color='secondary' 
+                onClick={this.getZip}>
+                LET'S MEET!
+              </Button>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton color="inherit">
@@ -218,23 +223,20 @@ class PrimarySearchAppBar extends React.Component {
                   <MailIcon />
                 </Badge>
               </IconButton>
-              <IconButton color="inherit">
+              <IconButton color="inherit"
+                aria-owns={isMenuOpen ? "material-appbar" : null}
+                aria-haspopup="true"
+                onClick={this.handleProfileMenuOpen}
+              >
                 <Badge
                   className={classes.margin}
                   badgeContent={17}
                   color="secondary"
                 >
-                  <NotificationsIcon />
+                <AccountCircle />
                 </Badge>
               </IconButton>
-              <IconButton
-                aria-owns={isMenuOpen ? "material-appbar" : null}
-                aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
+          
             </div>
             <div className={classes.sectionMobile}>
               <IconButton
