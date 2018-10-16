@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from "axios";
 import GID  from "../config"
 import Geocode from 'react-geocode';
+import UserList from './UserList';
 
 
 const loadPosition = async () => {
@@ -39,19 +40,26 @@ class App extends Component {
       selected: {},
       zip: "",
       notifCounter: 0, 
-      userList: {}
+      userList: []
       //userList is going to be the array for the
       //clicked on restaurant components
     };
 
     this.changeNo = this.changeNo.bind(this);
+    this.addElementToUserList = this.addElementToUserList.bind(this);
   }
 
   
-  changeNo() {
+  async changeNo(time, rId) {
+    
     let num = this.state.notifCounter
-    this.setState({notifCounter: ++num})
-    console.log('hello')
+    let usrArr = this.state.userList.concat({time, rId})
+    await this.setState({notifCounter: ++num, userList: usrArr})
+    console.log(this.state.userList)
+  }
+
+  addElementToUserList() {
+    alert(this.state.buttonID)
   }
 
 
@@ -98,10 +106,10 @@ getZip = () => {
       <Grid container={true} direction={"column"} justify={"center"}>
         <AppBar getZip={this.getZip} count={this.state.notifCounter} />
         <Router>
-          <RestaurantListComponent
-            restaurantsProp={this.state.restaurants}
-            changeNo={this.changeNo}
-          />
+          <div>
+            <Route exact path='/' render={() =>  <RestaurantListComponent restaurantsProp={this.state.restaurants} changeNo={this.changeNo} addEltoUL={this.addElementToUserList}/>} />
+            <Route path='/userlist' render={() => <UserList userList={this.state.userList} />} />
+          </div>
         </Router>
       </Grid>
     );

@@ -27,7 +27,7 @@ class RestarantComponent extends Component {
                 : null
             }&key=${GID}`}
           />
-        <Time changeNo={this.props.changeNo}/>
+        <Time changeNo={this.props.changeNo} rID={this.props.restaurantProp} addEltoUL={this.props.addEltoUL}/>
       </Grid>
     );
   }

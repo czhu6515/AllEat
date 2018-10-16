@@ -31,7 +31,6 @@ class RestaurantListComponent extends Component {
   // }
 
   render() {
-    console.log(this.props)
     let myProps = this.props
 
     // const { restaurantsProp, onClick } = this.props;
@@ -40,13 +39,12 @@ class RestaurantListComponent extends Component {
         <Scrollbars autoHeight autoHeightMin={100} autoHeightMax={500}>
           {this.props.restaurantsProp.map(function(e, i) {
             return (
-              <Link to={`${i}`}>
-                <RestaurantComponent
-                  restaurantProp={e}
-                  key={`restID${i}`}
-                  changeNo={myProps.changeNo}
-                />
-              </Link>
+              <RestaurantComponent
+                restaurantProp={e}
+                key={`restID${i}`}
+                changeNo={myProps.changeNo}
+                addEltoUL={myProps.addEltoUL}
+              />
             );
           })}
         </Scrollbars>

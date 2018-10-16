@@ -135,8 +135,7 @@ class PrimarySearchAppBar extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleClose}>My account</MenuItem>
+        <MenuItem onClick={this.handleClose}>See Your Selections</MenuItem>
       </Menu>
     );
 
@@ -214,16 +213,10 @@ class PrimarySearchAppBar extends React.Component {
               </Button>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton color="inherit">
-                <Badge
-                  className={classes.margin}
-                  badgeContent={4}
-                  color="secondary"
-                >
-                  <MailIcon />
-                </Badge>
-              </IconButton>
-              <IconButton color="inherit"
+             
+              <IconButton 
+                id='user-selections'
+                color="inherit"
                 aria-owns={isMenuOpen ? "material-appbar" : null}
                 aria-haspopup="true"
                 onClick={this.handleProfileMenuOpen}
@@ -239,13 +232,19 @@ class PrimarySearchAppBar extends React.Component {
           
             </div>
             <div className={classes.sectionMobile}>
-              <IconButton
-                aria-haspopup="true"
-                onClick={this.handleMobileMenuOpen}
-                color="inherit"
-              >
-                <MoreIcon />
-              </IconButton>
+              <IconButton color="inherit"
+                  aria-owns={isMenuOpen ? "material-appbar" : null}
+                  aria-haspopup="true"
+                  onClick={this.handleProfileMenuOpen}
+                >
+                  <Badge
+                    className={classes.margin}
+                    badgeContent={this.props.count}
+                    color="secondary"
+                  >
+                  <AccountCircle />
+                  </Badge>
+                </IconButton>
             </div>
           </Toolbar>
         </AppBar>
