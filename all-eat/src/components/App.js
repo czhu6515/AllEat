@@ -37,11 +37,23 @@ class App extends Component {
       restaurants: [],
       currentRestaurant: {},
       selected: {},
-      zip: ""
+      zip: "",
+      notifCounter: 0, 
+      userList: {}
+      //userList is going to be the array for the
+      //clicked on restaurant components
     };
 
-    // this.handleClick = this.handleClick.bind(this);
+    this.changeNo = this.changeNo.bind(this);
   }
+
+  
+  changeNo() {
+    let num = this.state.notifCounter
+    this.setState({notifCounter: ++num})
+
+  }
+
 
   async componentDidMount() {
       console.log("lOOK HERE")
@@ -81,12 +93,12 @@ getZip = () => {
   //   });
   // }
 
-
+  
   render() {
     return (
       <Grid container={true} direction={"column"} justify={"center"}>
 
-        <AppBar getZip={this.getZip} />
+        <AppBar getZip={this.getZip} count={this.state.notifCounter} />
 
       
 
@@ -101,6 +113,7 @@ getZip = () => {
             <Grid item>
               <RestaurantListComponent
                 restaurantsProp={this.state.restaurants}
+                handleClick={this.changeNo}
               />
             </Grid>
             <Grid item>

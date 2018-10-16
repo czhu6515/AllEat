@@ -230,7 +230,7 @@ class PrimarySearchAppBar extends React.Component {
               >
                 <Badge
                   className={classes.margin}
-                  badgeContent={17}
+                  badgeContent={this.props.count}
                   color="secondary"
                 >
                 <AccountCircle />
