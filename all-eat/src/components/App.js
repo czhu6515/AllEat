@@ -1,12 +1,12 @@
 //this is the main page that contains the app
 import React, { Component } from "react";
 import RestaurantListComponent from "./RestaurantListComponent";
-
+import '../CSS/App.css'
 import Grid from "@material-ui/core/Grid";
 import AppBar from "./AppBar";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from "axios";
-import { GID } from "../config"
+import GID  from "../config"
 import Geocode from 'react-geocode';
 
 
