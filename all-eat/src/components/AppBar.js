@@ -221,7 +221,7 @@ class PrimarySearchAppBar extends React.Component {
               <IconButton color="inherit">
                 <Badge
                   className={classes.margin}
-                  badgeContent={17}
+                  badgeContent={this.props.count}
                   color="secondary"
                 >
                   <NotificationsIcon />

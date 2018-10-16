@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styles from "../CSS/Restaurant.css";
 import Grid from "@material-ui/core/Grid";
 import Time from './Time';
+import {GID} from '../config';
 
 class RestarantComponent extends Component {
   sayHello = () => {
@@ -24,9 +25,9 @@ class RestarantComponent extends Component {
               this.props.restaurantProp.photos
                 ? this.props.restaurantProp.photos[0].photo_reference
                 : null
-            }&key=AIzaSyADV91zCNOJP51CkmFbYAekjklYesdQxvY`}
+            }&key=${GID}`}
           />
-        <Time/>
+        <Time handleClick={this.props.handleClick}/>
       </Grid>
     );
   }

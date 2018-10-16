@@ -21,14 +21,14 @@ class RestaurantListComponent extends Component {
     return (
       <Grid alignContent={"center"} spacing={32}>
         <Scrollbars autoHeight autoHeightMin={100} autoHeightMax={500}>
-          {this.props.restaurantsProp.map(function(e, i) {
+          {this.props.restaurantsProp.map((e, i) => {
             return (
               <Link to={`${i}`}>
                 <Grid item>
                   <RestaurantComponent
                     restaurantProp={e}
                     key={`restInd${i}`}
-                    // onClick={onClick}
+                    handleClick={this.props.handleClick}
                   />
                 </Grid>
               </Link>
