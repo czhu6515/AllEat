@@ -195,7 +195,7 @@ class PrimarySearchAppBar extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="fixed">
           <Toolbar>
             <h1 id='logo'>Meet 'n Eat</h1>
             <div className={classes.search}>

@@ -4,20 +4,20 @@ import RestaurantListComponent from "./RestaurantListComponent";
 import '../CSS/App.css'
 import Grid from "@material-ui/core/Grid";
 import AppBar from "./AppBar";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route} from "react-router-dom";
 import axios from "axios";
 import GID  from "../config"
 import Geocode from 'react-geocode';
 import UserList from './UserList';
-
+import Home from './Home'
 
 const loadPosition = async () => {
     try {
-        const position = await getCurrentPosition();
-        return position
+      const position = await getCurrentPosition();
+      return position
     }
     catch (error) {
-        console.log(error);
+      console.log(error);
     }
 };
 
@@ -97,8 +97,8 @@ getZip = () => {
       let loc = response.results[0].geometry
       let formatLoc = `${loc.location.lat},${loc.location.lng}`
       axios.get(`/foo/${formatLoc}`).then(res => {
-          let data = res.data.results
-          this.setState({restaurants: data})
+        let data = res.data.results
+        this.setState({restaurants: data})
       })
     }
   )
@@ -117,13 +117,11 @@ getZip = () => {
       <Grid container={true} direction={"column"} justify={"center"}>
         <Router>
           <div>
-            <div>
-            <AppBar getZip={this.getZip} count={this.state.notifCounter} />
-            </div>
-            <div>
-              <Route exact path='/' render={() =>  <RestaurantListComponent restaurantsProp={this.state.restaurants} changeNo={this.changeNo} addEltoUL={this.addElementToUserList}/>} />
-              <Route path='/userlist' render={() => <UserList userList={this.state.userList} />} />
-            </div>
+            <Route exact path='/' render={() => <Home getZip={this.getZip}  />} />
+            <Route exact path='/restaurants' 
+              render={() => <div><AppBar getZip={this.getZip} count={this.state.notifCounter} /><RestaurantListComponent restaurantsProp={this.state.restaurants} changeNo={this.changeNo} addEltoUL={this.addElementToUserList}/></div>} />
+            <Route path='/userlist' 
+              render={() => <UserList userList={this.state.userList} />} />
           </div>
         </Router>
       </Grid>
