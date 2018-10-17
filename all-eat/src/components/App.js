@@ -4,12 +4,12 @@ import RestaurantListComponent from "./RestaurantListComponent";
 import '../CSS/App.css'
 import Grid from "@material-ui/core/Grid";
 import AppBar from "./AppBar";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route} from "react-router-dom";
 import axios from "axios";
 import GID  from "../config"
 import Geocode from 'react-geocode';
 import UserList from './UserList';
-
+import Home from './Home'
 
 const loadPosition = async () => {
     try {
