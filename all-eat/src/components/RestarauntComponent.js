@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import Time from './Time';
 import GID from '../config';
+import '../CSS/Restaurant.css'
 
 
 class RestarantComponent extends Component {
@@ -9,32 +10,33 @@ class RestarantComponent extends Component {
     this.props.onClick();
   };
 
+ 
   render() {
+    let myProps = this.props  
+  
     return (
-      <Grid container item id='restaurant' xs={12} md={6} xl={3}>
-        <Grid item styles={{margin: 0}}>
-          <h2 id='rest-name' >{this.props.restaurantProp.name}</h2>
-          <p style={{ color: 'red' }} id="rest-address">{this.props.restaurantProp.vicinity}</p>
+      <div id='rest-wrapper'>
+        <div id='restaurant'>
+          <h2 id='rest-name' >{myProps.restaurantProp.name}</h2>
+          <p style={{ color: 'red' }} id="rest-address">{myProps.restaurantProp.vicinity}</p>
           <div id='rest-PR'>
             <p id="rest-price">
-              Price Level: {this.props.restaurantProp.price_level}
+              Price Level: {myProps.restaurantProp.price_level}
             </p>
             <p id="rest-rating">
-              Rating: {this.props.restaurantProp.rating}
+              Rating: {myProps.restaurantProp.rating}
             </p>
           </div>
-        </Grid>
-        <Grid>
-          <img
+          <img id='rest-img'
             src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${
-              this.props.restaurantProp.photos
-                ? this.props.restaurantProp.photos[0].photo_reference
+              myProps.restaurantProp.photos
+                ? myProps.restaurantProp.photos[0].photo_reference
                 : null
             }&key=${GID}`}
           />
-          </Grid>
-        <Time people={this.props.people} changeNo={this.props.changeNo} rID={this.props.restaurantProp} addEltoUL={this.props.addEltoUL}/>
-      </Grid>
+        </div>
+        <Time changeNo={myProps.changeNo} rID={myProps.restaurantProp} />
+      </div>
     );
   }
 }

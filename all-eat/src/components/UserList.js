@@ -6,8 +6,6 @@ import UserRestComp from './UserRestComp'
 
 export default class UserList extends React.Component {
 
-
-
   render() {
     return (
       <Grid container>

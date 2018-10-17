@@ -36,7 +36,8 @@ class App extends Component {
       zip: "",
       notifCounter: 0, 
       userList: [],
-      people: []
+      timeslots: [],
+      times:[10, 11, 12]
       //userList is going to be the array for the
       //clicked on restaurant components
     };
@@ -48,13 +49,13 @@ class App extends Component {
   async changeNo(time, rId, boo) {
     
     let num = this.state.notifCounter
-    let peep = this.state.people
+    let peep = [...this.state.timeslots];
     
     if(boo) {
       let usrArr = this.state.userList.concat({time, rId})
-      await this.setState({notifCounter: ++num, userList: usrArr, people: ++peep})
-      console.log(this.state.people)
-    }
+      // let counterArr = peep.concat({peep: ++peep, rId})
+      await this.setState({notifCounter: ++num, userList: usrArr})
+        }
     else {
       let filtered = this.state.userList.filter(function(e) {
         return (e.time !== time &&  e.rId !== rId.rId )
@@ -69,16 +70,23 @@ class App extends Component {
   }
 
   async componentDidMount() {
-      console.log("lOOK HERE")
-      let geoLoc;
-      let position = await loadPosition()
-      let formatLoc = `${position.coords.latitude},${position.coords.longitude}`
-      console.log(formatLoc)
-      axios.get(`/foo/${formatLoc}`).then(res => {
-          let data = res.data.results
-          this.setState({restaurants: data})
+    let timeslots;
+    let position = await loadPosition()
+    let formatLoc = `${position.coords.latitude},${position.coords.longitude}`
+    console.log(formatLoc)
+    let res = await axios.get(`/foo/${formatLoc}`);
+    let data = res.data.results
+    await this.setState({restaurants: data});
+    timeslots = this.state.restaurants.map((e, i) => {
+      let obj = {};
+      obj[e.id] = this.state.times.map((e, i) => {
+        return {id: e, people: Math.ceil(Math.random() * 10)}
       })
-}
+      return obj;
+    });
+    await this.setState({timeslots: timeslots});
+    console.log("timeslots", this.state.timeslots)
+  }
 
 
 
@@ -110,7 +118,7 @@ getZip = () => {
             <Route exact path='/' 
               render={() => <Home getZip={this.getZip}  />} />
             <Route exact path='/restaurants' 
-              render={() => <div><AppBar getZip={this.getZip} count={this.state.notifCounter} /><RestaurantListComponent people={this.state.people} restaurantsProp={this.state.restaurants} changeNo={this.changeNo} /></div>} />
+              render={() => <div><AppBar getZip={this.getZip} count={this.state.notifCounter} /><RestaurantListComponent timeslots={this.state.timeslots} restaurantsProp={this.state.restaurants} changeNo={this.changeNo} /></div>} />
             <Route path='/userlist' 
               render={() => <UserList userList={this.state.userList} />} />
           </div>

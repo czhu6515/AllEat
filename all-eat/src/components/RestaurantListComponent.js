@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import RestaurantComponent from "./RestarauntComponent";
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import '../CSS/RestaurantListComponent.css'
 
 const styles = theme => ({
   root: {
@@ -36,14 +37,13 @@ class RestaurantListComponent extends Component {
         alignItems={"center"} spacing={24} direction={'row'}	id='rest-list-wrapper' >
           {this.props.restaurantsProp.map(function(e, i) {
             return (
-              <RestaurantComponent
-                restaurantProp={e}
-                key={`restID${i}`}
-                changeNo={myProps.changeNo}
-                people={myProps.people}
-              />
-            
-            );
+                <RestaurantComponent
+                  restaurantProp={e}
+                  key={`restID${i}`}
+                  changeNo={myProps.changeNo}
+                  timeslots={myProps.timeslots}
+                />
+              );
           })}
       </Grid>
     

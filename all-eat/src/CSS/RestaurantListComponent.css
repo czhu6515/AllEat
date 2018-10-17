@@ -1,5 +1,14 @@
 #rest-list-wrapper{
-    widows: 100vw;
+    width: 100vw;
     height:100vh;
     display: flex;
+    justify-content: center;
+}
+
+#rest-wrapper{
+    height: 25em;
+    width: 39em;
+    /* background: pink; */
+    display: flex;
+
 }

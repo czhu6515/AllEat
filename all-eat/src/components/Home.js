@@ -1,27 +1,42 @@
 import React, {Component} from 'react'
-import InputBase from '@material-ui/core/InputBase'
+import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import {Link} from 'react-router-dom'
-import Grid from '@material-ui/core/Grid'
+import '../CSS/Home.css'
+import Paper from '@material-ui/core/Paper';
+import Image from '../imgs/main.jpeg'
+
+const styles = {
+  paperContainer: {
+      backgroundImage: `url(${Image})`,
+      width: '98vw',
+      height: '98vh',
+      overflowX: 'undefined'
+  }
+};
 
 export default class Home extends Component {
   render(){
     return(
-      <Grid>
-        <InputBase
-          onKeyDown={this.keyPress}
-          required={true}
-          placeholder="New Zip..."
-          id="input-base"
-        />
-        <Link to='/restaurants'>
-          <Button
-            color='secondary' 
-            onClick={this.getZip}>
-            LET'S MEET!
-          </Button>
-        </Link>
-      </Grid>
+      <Paper style={styles.paperContainer} id='home-paper'>
+        <div id='home-box'>
+          <h1>Meet 'n Eat!</h1>
+          <TextField
+            id="filled-name"
+            label="Zip Code"
+            margin="normal"
+            variant="filled"
+          />
+          <Link to='/restaurants'>
+            <Button
+              variant='contained'
+              color='secondary' 
+              onClick={this.getZip}>
+              LET'S MEET!
+            </Button>
+          </Link>
+        </div>
+      </Paper>
     )
   }
 }

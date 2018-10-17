@@ -5,6 +5,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { Grid } from "@material-ui/core";
+import '../CSS/Time.css'
 
 // 11 12 1 2 3 4 5 6 7 8 9 10
 
@@ -17,13 +18,13 @@ class Time extends Component {
     for (let i = 0; i < 11; i++){
             
       if(i === 0){
-        tNum = '11:00am';
+        tNum = '11am';
       }
       else if(i === 1){
-        tNum = '12:00pm'
+        tNum = '12pm'
       }
       else {
-        tNum = `${i -1}:00pm` ;
+        tNum = `${i -1}pm` ;
       }
       let aNum = tNum
       array.push(<FormControlLabel
@@ -38,26 +39,37 @@ class Time extends Component {
       return array;
   }
 
-  awesome = (people) => {
+  timeSlots = (timeslot) => {
     let array = []
     for (let i = 0; i < 11; i++){
-      array.push(<Grid item spacing={8}>{people}</Grid>)
+      array.push(<Grid item spacing={8}>{timeslot}</Grid>)
     }
     return array
   }
+      /* myProps.timeslot[0][myProps.rID.id][0].timeslot */
 
     render() {
-      const { classes } = this.props;
-      return (
+      const myProps = this.props;
+      // let specificTimeSlots = myProps.timeslots.filter(function(e) {
+      //   return (e === myProps.rID.id)
+      // })
+      console.log('from Time', myProps)
+    
+      return (  
         <FormControl component="fieldset">
-        <FormLabel component="legend">Choose Times!</FormLabel>
           <FormGroup styles={{display:'flex'}}>
-            <Grid container item>{this.timeslot()}</Grid>
-            <Grid container item spacing={8}>{this.awesome(this.props.people)}</Grid>
+            <div id='checkboxes'>{this.timeslot()}</div>
+            {/* <Grid container item spacing={8}>{this.timeSlots()}</Grid> */}
           </FormGroup>
         </FormControl>
-        
+
       )
+      
+      // } else {
+      //   console.log(myProps.people);
+      //   return null
+        
+      // }
     }
 }
 

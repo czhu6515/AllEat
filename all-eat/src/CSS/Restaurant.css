@@ -1,7 +1,13 @@
-/* #restaurant {
-  height: 490px;
-  width: 320px;
-  display: inline-block;
+#restaurant {
+  height: 300px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+#rest-img {
+  height: 250px;
+  width: 300px
 }
 
 #rest-name {
@@ -32,4 +38,4 @@
 
 #rest-rating{
   margin:0;
-} */
+}
