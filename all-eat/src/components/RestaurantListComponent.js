@@ -2,12 +2,10 @@
 
 import React, { Component } from "react";
 import RestaurantComponent from "./RestarauntComponent";
-import { Scrollbars } from "react-custom-scrollbars";
-import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
+// import { Scrollbars } from "react-custom-scrollbars";
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+// import '../CSS/RestaurantListComponent.css'
 
 const styles = theme => ({
   root: {
@@ -35,20 +33,20 @@ class RestaurantListComponent extends Component {
 
     // const { restaurantsProp, onClick } = this.props;
     return (
-      <Grid alignContent={"center"} spacing={24} id='rest-list-wrapper'>
-        <Scrollbars autoHeight autoHeightMin={100} autoHeightMax={500}>
+      <Grid container	alignItems={"center"} spacing={24} direction={'row'}	id='rest-list-wrapper' >
           {this.props.restaurantsProp.map(function(e, i) {
             return (
-              <RestaurantComponent
-                restaurantProp={e}
-                key={`restID${i}`}
-                changeNo={myProps.changeNo}
-                addEltoUL={myProps.addEltoUL}
-              />
+                <RestaurantComponent
+                  restaurantProp={e}
+                  key={`restID${i}`}
+                  changeNo={myProps.changeNo}
+                  addEltoUL={myProps.addEltoUL}
+                />
+            
             );
           })}
-        </Scrollbars>
       </Grid>
+    
     );
   }
 }

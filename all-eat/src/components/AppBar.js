@@ -11,12 +11,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import MoreIcon from "@material-ui/icons/MoreVert";
+import '../CSS/AppBar.css'
 
 const styles = theme => ({
   root: {
@@ -96,12 +95,21 @@ class PrimarySearchAppBar extends React.Component {
             mobileMoreAnchorEl: null
         }
         this.getZip = this.getZip.bind(this)
+        // this.keyPress = this.bind.keyPress.bind(this)
+        // this.handleEnter = this.bind.handleEnter.bind(this)
     }
 
 
   getZip = (event) => {
       event.preventDefault()
       this.props.getZip()
+  }
+
+  keyPress = (event) => {
+    if(event.keyCode == 13){
+      event.preventDefault()
+      this.props.getZip()
+    }
   }
 
   handleProfileMenuOpen = event => {
@@ -120,6 +128,13 @@ class PrimarySearchAppBar extends React.Component {
   handleMobileMenuClose = () => {
     this.setState({ mobileMoreAnchorEl: null });
   };
+
+  // handleEnter = (ev) => {
+  //   this.getZip()
+
+  // }
+
+  
 
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
@@ -184,21 +199,16 @@ class PrimarySearchAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <Typography
-              className={classes.title}
-              variant="h6"
-              color="inherit"
-              noWrap
-            >
-              Meet n Eat
-            </Typography>
+            <h1 id='logo'>Meet 'n Eat</h1>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder="New Zip Code..."
-                id= "input-base"
+                onKeyDown={this.keyPress}
+                required={true}
+                placeholder="New Zip..."
+                id="input-base"
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput
