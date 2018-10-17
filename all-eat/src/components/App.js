@@ -55,9 +55,24 @@ class App extends Component {
   async changeNo(time, rId) {
     
     let num = this.state.notifCounter
-    let usrArr = this.state.userList.concat({time, rId})
-    await this.setState({notifCounter: ++num, userList: usrArr})
-    console.log(this.state.userList)
+
+
+    if(boo) {
+      let usrArr = this.state.userList.concat({time, rId})
+      await this.setState({notifCounter: ++num, userList: usrArr})
+    }
+    else {      
+      let filtered = this.state.userList.filter(function(e) {
+        // console.log(rId)
+        console.log(e.time, time.time)
+        console.log({time, rId})
+          return (e.time !== time.time &&  e.rId !== rId.rId )
+      }) 
+      await this.setState({notifCounter: --num, userList: filtered})
+      console.log(this.state.userList)
+  }
+
+  // console.log(this.state.userList)
   }
 
   addElementToUserList() {
