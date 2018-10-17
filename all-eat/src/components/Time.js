@@ -1,9 +1,22 @@
 import React, { Component } from "react";
-import styles from "../CSS/Restaurant.css";
-import Grid from "@material-ui/core/Grid";
-import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Checkbox from '@material-ui/core/Checkbox';
 
 // 11 12 1 2 3 4 5 6 7 8 9 10
+const styles = theme => ({
+    root: {
+      display: 'flex',
+    },
+    formControl: {
+      margin: theme.spacing.unit * 3,
+    },
+  });
 
 class Time extends Component {
 
@@ -13,43 +26,45 @@ class Time extends Component {
     // }
 
 
-    timeslot = () => {
-        let array = [];
-        let tNum = "";
-        for (let i = 0; i < 11; i++){
+  timeslot = () => {
+    let array = [];
+    let tNum = "";
+    for (let i = 0; i < 11; i++){
             
-            if(i === 0){
-                tNum = '11:00am';
-            }
-            else if(i === 1){
-                tNum = '12:00pm'
-            }
-            else {
-                tNum = `${i -1}:00pm` ;
-            }
-            let aNum = tNum
-            array.push(<Button key={i}
-                        buttonID={{time:`${tNum}`, rID:this.props.rID}} 
-                        variant="outlined" 
-                        size="small" 
-                        color="primary" 
-                        onClick={ (e)=> this.props.changeNo(aNum, this.props.rID) }>{tNum}</Button>);
-        }
-        // console.log(array);
-        return array;
+      if(i === 0){
+        tNum = '11:00am';
+      }
+      else if(i === 1){
+        tNum = '12:00pm'
+      }
+      else {
+        tNum = `${i -1}:00pm` ;
+      }
+      let aNum = tNum
+      array.push(<FormControlLabel
+                    control={
+                    <Checkbox 
+                      onChange={ (e, boo)=> this.props.changeNo(aNum, this.props.rID, boo) }>{tNum}</Checkbox>
+                    }
+                  />)
+  }
+      return array;
     }
 
     render() {
-        
-        return (
-            <div>
-                {this.timeslot()}
-            </div>
+      const { classes } = this.props;
 
-          
-        )
+      return (
+        <FormControl component="fieldset" className={classes.formControl}>
+        <FormLabel component="legend">Pick two</FormLabel>
+          <FormGroup>
+              {this.timeslot()}
+          </FormGroup>
+        </FormControl>
+        
+      )
     }
 }
 
 
-export default Time;
+export default withStyles(styles)(Time);
