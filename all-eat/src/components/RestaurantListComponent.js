@@ -36,7 +36,7 @@ class RestaurantListComponent extends Component {
     // const { restaurantsProp, onClick } = this.props;
     return (
       <Grid alignContent={"center"} spacing={24} id='rest-list-wrapper'>
-        <Scrollbars autoHeight autoHeightMin={100} autoHeightMax={500}>
+        <Scrollbars autoHeight autoHeightMin={100} autoHeightMax={1000}>
           {this.props.restaurantsProp.map(function(e, i) {
             return (
               <RestaurantComponent
