@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Time from './Time';
 import GID from '../config';
 
+
 class RestarantComponent extends Component {
   sayHello = () => {
     this.props.onClick();
@@ -11,15 +12,17 @@ class RestarantComponent extends Component {
 
   render() {
     return (
-      <Grid item={true} color={"#FFAB91"} id='restaurant'>
-        <h3>{this.props.restaurantProp.name}</h3>
-        <p className="rest-address">{this.props.restaurantProp.vicinity}</p>
-        <p className="rest-price">
-          Price Level: {this.props.restaurantProp.price_level}
-        </p>
-        <p className="rest-rating">
-          Rating: {this.props.restaurantProp.rating}
-        </p>
+      <Grid item id='restaurant' xs={12} md={6} xl={3}>
+        <h2 id='rest-name'>{this.props.restaurantProp.name}</h2>
+        <p id="rest-address">{this.props.restaurantProp.vicinity}</p>
+        <div id='rest-PR'>
+          <p id="rest-price">
+            Price Level: {this.props.restaurantProp.price_level}
+          </p>
+          <p id="rest-rating">
+            Rating: {this.props.restaurantProp.rating}
+          </p>
+        </div>
         <img
             src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${
               this.props.restaurantProp.photos

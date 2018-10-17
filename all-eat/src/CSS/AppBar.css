@@ -1,0 +1,10 @@
+h1 {
+  font-family: Pacifico
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        display:none;
+    }
+
+}

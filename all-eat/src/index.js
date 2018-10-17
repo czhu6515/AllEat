@@ -5,7 +5,6 @@ import {render} from 'react-dom'
 import App from './components/App'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography'
-import Geocode from "react-geocode";
 
 const theme = createMuiTheme({
   typography: {
