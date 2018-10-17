@@ -31,10 +31,11 @@ export default class ZipForm extends React.Component {
       let zip = document.getElementById("zip").value
      await Geocode.setApiKey(`${GID}`);
       await Geocode.fromAddress(`${zip}`).then(
-          response => {
+          response => 
+          {
               let loc = response.results[0].geometry
               let formatLoc = `${loc.location.lat},${loc.location.lng}`
-              this.setState({zip: formatLoc, open: f
+              this.setState({zip: formatLoc, open: f})
           }
       )
   };

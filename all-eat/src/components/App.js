@@ -45,6 +45,8 @@ class App extends Component {
       //clicked on restaurant components
     };
 
+   
+
     this.changeNo = this.changeNo.bind(this);
     this.addElementToUserList = this.addElementToUserList.bind(this);
   }
@@ -104,11 +106,15 @@ getZip = () => {
   render() {
     return (
       <Grid container={true} direction={"column"} justify={"center"}>
-        <AppBar getZip={this.getZip} count={this.state.notifCounter} />
         <Router>
           <div>
-            <Route exact path='/' render={() =>  <RestaurantListComponent restaurantsProp={this.state.restaurants} changeNo={this.changeNo} addEltoUL={this.addElementToUserList}/>} />
-            <Route path='/userlist' render={() => <UserList userList={this.state.userList} />} />
+            <div>
+            <AppBar getZip={this.getZip} count={this.state.notifCounter} />
+            </div>
+            <div>
+              <Route exact path='/' render={() =>  <RestaurantListComponent restaurantsProp={this.state.restaurants} changeNo={this.changeNo} addEltoUL={this.addElementToUserList}/>} />
+              <Route path='/userlist' render={() => <UserList userList={this.state.userList} />} />
+            </div>
           </div>
         </Router>
       </Grid>
