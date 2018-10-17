@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import styles from "../CSS/Restaurant.css";
 import Grid from "@material-ui/core/Grid";
 import Time from './Time';
 import GID from '../config';
@@ -34,7 +33,7 @@ class RestarantComponent extends Component {
             }&key=${GID}`}
           />
           </Grid>
-        <Time changeNo={this.props.changeNo} rID={this.props.restaurantProp} addEltoUL={this.props.addEltoUL}/>
+        <Time people={this.props.people} changeNo={this.props.changeNo} rID={this.props.restaurantProp} addEltoUL={this.props.addEltoUL}/>
       </Grid>
     );
   }
