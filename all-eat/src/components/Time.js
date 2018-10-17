@@ -14,7 +14,7 @@ const styles = theme => ({
       display: 'flex',
     },
     formControl: {
-      margin: theme.spacing.unit * 3,
+      margin: theme.spacing.unit *2,
     },
   });
 
@@ -42,9 +42,11 @@ class Time extends Component {
       }
       let aNum = tNum
       array.push(<FormControlLabel
+                    label={aNum}
                     control={
                     <Checkbox 
-                      onChange={ (e, boo)=> this.props.changeNo(aNum, this.props.rID, boo) }>{tNum}</Checkbox>
+                      value={aNum}
+                      onChange={ (e, boo)=> this.props.changeNo(aNum, this.props.rID, boo) } />
                     }
                   />)
   }
@@ -56,7 +58,7 @@ class Time extends Component {
 
       return (
         <FormControl component="fieldset" className={classes.formControl}>
-        <FormLabel component="legend">Pick two</FormLabel>
+        <FormLabel component="legend">Choose Times!</FormLabel>
           <FormGroup>
               {this.timeslot()}
           </FormGroup>

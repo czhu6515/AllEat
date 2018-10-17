@@ -33,15 +33,14 @@ class RestaurantListComponent extends Component {
 
     // const { restaurantsProp, onClick } = this.props;
     return (
-      <Grid container	alignItems={"center"} spacing={24} direction={'row'}	id='rest-list-wrapper' >
+      <Grid style={{ marginTop: '60px', overflowY:'hidden' }}container	alignItems={"center"} spacing={24} direction={'row'}	id='rest-list-wrapper' >
           {this.props.restaurantsProp.map(function(e, i) {
             return (
-                <RestaurantComponent
-                  restaurantProp={e}
-                  key={`restID${i}`}
-                  changeNo={myProps.changeNo}
-                  addEltoUL={myProps.addEltoUL}
-                />
+              <RestaurantComponent
+                restaurantProp={e}
+                key={`restID${i}`}
+                changeNo={myProps.changeNo}
+              />
             
             );
           })}
