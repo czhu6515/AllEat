@@ -52,33 +52,27 @@ class App extends Component {
   }
 
   
-  async changeNo(time, rId) {
+  async changeNo(time, rId, boo) {
     
     let num = this.state.notifCounter
-
 
     if(boo) {
       let usrArr = this.state.userList.concat({time, rId})
       await this.setState({notifCounter: ++num, userList: usrArr})
     }
-    else {      
+    else {
       let filtered = this.state.userList.filter(function(e) {
-        // console.log(rId)
-        console.log(e.time, time.time)
-        console.log({time, rId})
-          return (e.time !== time.time &&  e.rId !== rId.rId )
-      }) 
-      await this.setState({notifCounter: --num, userList: filtered})
-      console.log(this.state.userList)
-  }
+        console.log(e.time, time)
+        return (e.time !== time &&  e.rId !== rId.rId )
+      })
+      await this.setState({notifCounter: --num, userList: filtered}) 
+    }
 
-  // console.log(this.state.userList)
   }
 
   addElementToUserList() {
     alert(this.state.buttonID)
   }
-
 
   async componentDidMount() {
       console.log("lOOK HERE")
@@ -96,18 +90,18 @@ class App extends Component {
 
 
 getZip = () => {
-    let zip = document.getElementById("input-base").value
-    Geocode.setApiKey(`${GID}`)
-    Geocode.fromAddress(`${zip}`).then(
-        response => {
-            let loc = response.results[0].geometry
-            let formatLoc = `${loc.location.lat},${loc.location.lng}`
-            axios.get(`/foo/${formatLoc}`).then(res => {
-                let data = res.data.results
-                this.setState({restaurants: data})
-            })
-        }
-    )
+  let zip = document.getElementById("input-base").value
+  Geocode.setApiKey(`${GID}`)
+  Geocode.fromAddress(`${zip}`).then(
+    response => {
+      let loc = response.results[0].geometry
+      let formatLoc = `${loc.location.lat},${loc.location.lng}`
+      axios.get(`/foo/${formatLoc}`).then(res => {
+          let data = res.data.results
+          this.setState({restaurants: data})
+      })
+    }
+  )
 
 }
 
