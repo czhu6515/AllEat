@@ -48,12 +48,9 @@ class App extends Component {
   
   async changeNo(time, rId, boo) {
     
-    let num = this.state.notifCounter
-    let peep = [...this.state.timeslots];
-    
+    let num = this.state.notifCounter    
     if(boo) {
       let usrArr = this.state.userList.concat({time, rId})
-      // let counterArr = peep.concat({peep: ++peep, rId})
       await this.setState({notifCounter: ++num, userList: usrArr})
         }
     else {
