@@ -13,12 +13,20 @@
   justify-content: center;
   margin: 0;
 }
+#big-box {
+    background: radial-gradient(
+      circle at 100%,
+      rgb(255, 42, 141),
+      #e2afd3 75%
+    );
+  }
+
 @media only screen and (max-width: 600px) {
   #big-box {
     background: radial-gradient(
       circle at 100%,
-      rgb(152, 236, 215),
-      #efaecf 75%
+      #001C23,
+      #000000 75%
     );
   }
 
