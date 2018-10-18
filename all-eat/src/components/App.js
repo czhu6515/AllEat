@@ -1,4 +1,3 @@
-//this is the main page that contains the app
 import React, { Component } from "react";
 import RestaurantListComponent from "./RestaurantListComponent";
 import '../CSS/App.css'
@@ -27,10 +26,6 @@ const getCurrentPosition = (options = {}) => {
     });
 };
 
-
-  // let {data} = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${formatLoc}&radius=1500&type=restaurant&key=${GID}`)
-
-
 class App extends Component {
   constructor() {
     super();
@@ -40,13 +35,12 @@ class App extends Component {
       selected: {},
       zip: "",
       notifCounter: 0, 
-      userList: []
+      userList: [],
+      timeslots: [],
+      times:[10, 11, 12]
       //userList is going to be the array for the
       //clicked on restaurant components
     };
-
-   
-
     this.changeNo = this.changeNo.bind(this);
     this.addElementToUserList = this.addElementToUserList.bind(this);
   }
@@ -54,15 +48,13 @@ class App extends Component {
   
   async changeNo(time, rId, boo) {
     
-    let num = this.state.notifCounter
-
+    let num = this.state.notifCounter    
     if(boo) {
       let usrArr = this.state.userList.concat({time, rId})
       await this.setState({notifCounter: ++num, userList: usrArr})
-    }
+        }
     else {
       let filtered = this.state.userList.filter(function(e) {
-        console.log(e.time, time)
         return (e.time !== time &&  e.rId !== rId.rId )
       })
       await this.setState({notifCounter: --num, userList: filtered}) 
@@ -75,17 +67,23 @@ class App extends Component {
   }
 
   async componentDidMount() {
-      console.log("lOOK HERE")
-      let geoLoc;
-      let position = await loadPosition()
-      let formatLoc = `${position.coords.latitude},${position.coords.longitude}`
-      // this.setState({zip: formatLoc})
-      console.log(formatLoc)
-      axios.get(`/foo/${formatLoc}`).then(res => {
-          let data = res.data.results
-          this.setState({restaurants: data})
+    let timeslots;
+    let position = await loadPosition()
+    let formatLoc = `${position.coords.latitude},${position.coords.longitude}`
+    console.log(formatLoc)
+    let res = await axios.get(`/foo/${formatLoc}`);
+    let data = res.data.results
+    await this.setState({restaurants: data});
+    timeslots = this.state.restaurants.map((e, i) => {
+      let obj = {};
+      obj[e.id] = this.state.times.map((e, i) => {
+        return {id: e, people: Math.ceil(Math.random() * 10)}
       })
-}
+      return obj;
+    });
+    await this.setState({timeslots: timeslots});
+    console.log("timeslots", this.state.timeslots)
+  }
 
 
 
@@ -105,21 +103,19 @@ getZip = () => {
 
 }
 
-  // handleClick() {
-  //   this.setState({
-  //     currentRestaurant: data[Number(window.location.pathname.slice(1))]
-  //   });
-  // }
-
+  
   
   render() {
+    let myProps = this.props
+
     return (
       <Grid container={true} direction={"column"} justify={"center"}>
         <Router>
           <div>
-            <Route exact path='/' render={() => <Home getZip={this.getZip}  />} />
+            <Route exact path='/' 
+              render={() => <Home getZip={this.getZip}  />} />
             <Route exact path='/restaurants' 
-              render={() => <div><AppBar getZip={this.getZip} count={this.state.notifCounter} /><RestaurantListComponent restaurantsProp={this.state.restaurants} changeNo={this.changeNo} addEltoUL={this.addElementToUserList}/></div>} />
+              render={() => <div><AppBar getZip={this.getZip} count={this.state.notifCounter} /><RestaurantListComponent timeslots={this.state.timeslots} restaurantsProp={this.state.restaurants} changeNo={this.changeNo} /></div>} />
             <Route path='/userlist' 
               render={() => <UserList userList={this.state.userList} />} />
           </div>

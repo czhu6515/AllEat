@@ -1,29 +1,17 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
+import '../CSS/Time.css'
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 // 11 12 1 2 3 4 5 6 7 8 9 10
-const styles = theme => ({
-    root: {
-      display: 'flex',
-    },
-    formControl: {
-      margin: theme.spacing.unit *2,
-    },
-  });
+
 
 class Time extends Component {
-
-    // changeNo = (e, time, rId) => {
-    //     console.log(e, time, rId);
-    //     // this.props.changeNo()
-    // }
+  
 
 
   timeslot = () => {
@@ -32,41 +20,77 @@ class Time extends Component {
     for (let i = 0; i < 11; i++){
             
       if(i === 0){
-        tNum = '11:00am';
+        tNum = '11am';
       }
       else if(i === 1){
-        tNum = '12:00pm'
+        tNum = '12pm'
       }
       else {
-        tNum = `${i -1}:00pm` ;
+        tNum = `${i -1}pm` ;
       }
       let aNum = tNum
-      array.push(<FormControlLabel
+      let hoverNumber = 0
+      array.push( 
+                  <FormControlLabel
                     label={aNum}
                     control={
-                    <Checkbox 
-                      value={aNum}
-                      onChange={ (e, boo)=> this.props.changeNo(aNum, this.props.rID, boo) } />
+                      
+                      <div>
+                      
+                      <Tooltip id='hoverPop' title={hoverNumber= Math.ceil(Math.random() * 10)}>
+                        <Checkbox 
+                          tooltip='hello'
+                          value={aNum}
+                          onChange={ (e, boo) => {
+                            this.props.changeNo(aNum, this.props.rID, boo); 
+                            hoverNumber += 1
+                          } } 
+                        />
+                      </Tooltip>
+                      </div>
                     }
-                  />)
-  }
+                    />
+                 )
+    }   
       return array;
-    }
+  }
+
+  renderHoverPopulation(e){
+    console.log('this evet!', e)
+  }
+  // timeSlots = (timeslot) => {
+  //   let array = []
+  //   for (let i = 0; i < 11; i++){
+  //     array.push(<Grid item spacing={8}>{timeslot}</Grid>)
+  //   }
+  //   return array
+  // }
+      /* myProps.timeslot[0][myProps.rID.id][0].timeslot */
 
     render() {
-      const { classes } = this.props;
-
-      return (
-        <FormControl component="fieldset" className={classes.formControl}>
-        <FormLabel component="legend">Choose Times!</FormLabel>
-          <FormGroup>
-              {this.timeslot()}
+      const myProps = this.props;
+      // let specificTimeSlots = myProps.timeslots.filter(function(e) {
+      //   return (e === myProps.rID.id)
+      // })
+      console.log('from Time', myProps)
+    
+      return (  
+        <FormControl component="fieldset">
+          <FormGroup styles={{display:'flex'}}>
+            <div id='checkboxes' >{this.timeslot()}</div>
+            {/* <Grid container item spacing={8}>{this.timeSlots()}</Grid> */}
           </FormGroup>
         </FormControl>
-        
+
       )
+      
+      // } else {
+      //   console.log(myProps.people);
+      //   return null
+        
+      // }
     }
 }
 
 
-export default withStyles(styles)(Time);
+export default Time;

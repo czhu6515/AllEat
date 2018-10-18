@@ -2,9 +2,6 @@
 //the user selected restaurant
 
 import React, { Component } from "react";
-import axios from "axios";
-import styles from "../CSS/CurrentRestaurantComponent.css";
-import Card from "@material-ui/core/Card";
 import { Grid } from "@material-ui/core";
 
 class CurrentRestaurantComponent extends Component {
