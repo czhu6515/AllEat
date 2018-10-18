@@ -9,9 +9,9 @@ import Image from "../imgs/main.jpeg";
 const styles = {
   paperContainer: {
     backgroundImage: `url(${Image})`,
-    width: "98vw",
-    height: "98vh",
-    overflowX: "undefined"
+    width: "99.5vw",
+    height: "99.9vh",
+    // overflowX: "undefined"
   }
 };
 
