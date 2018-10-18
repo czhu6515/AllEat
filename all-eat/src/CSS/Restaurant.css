@@ -7,35 +7,35 @@
 
 #rest-img {
   height: 250px;
-  width: 300px
+  width: 300px;
 }
 
 #rest-name {
-  color:red;
-  margin:0;
+  color: red;
+  margin: 0;
   padding: 0;
-  margin-top:10px;
+  margin-top: 10px;
 }
 
-#rest-address{
+#rest-address {
   margin: 0;
   padding-left: 2em;
 }
 
-#rest-PR{
+#rest-PR {
   margin: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-#rest-price{
+#rest-price {
   margin: 0;
   display: flex;
   height: auto;
-  width:10em;
+  width: 10em;
 }
 
-#rest-rating{
-  margin:0;
+#rest-rating {
+  margin: 0;
 }

@@ -1,5 +1,6 @@
 #checkboxes {
   /* background: green; */
+  justify-content: center;
   width: 16em;
   height: 20em;
   margin: 0.5em;

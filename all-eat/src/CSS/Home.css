@@ -7,7 +7,7 @@
 }
 
 #home-box {
-  width: 25%;
+  width: 50%;
   height: 35%;
   display: flex;
   flex-direction: column;
@@ -17,6 +17,13 @@
   border-radius: 2em;
 }
 
-#home-box h1{
-  color:rgb(218, 218, 218);
+#home-box h1 {
+  color: rgb(218, 218, 218);
+}
+
+@media only screen and (max-width: 600px) {
+  #home-box {
+    width: 70%;
+    height: 45%;
+  }
 }

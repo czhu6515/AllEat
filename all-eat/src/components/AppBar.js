@@ -1,8 +1,8 @@
 import React from "react";
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import AppBar from "@material-ui/core/AppBar"
-import Button from "@material-ui/core/Button"
+import AppBar from "@material-ui/core/AppBar";
+import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import InputBase from "@material-ui/core/InputBase";
@@ -15,7 +15,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import '../CSS/AppBar.css'
+import "../CSS/AppBar.css";
 
 const styles = theme => ({
   root: {
@@ -88,29 +88,28 @@ const styles = theme => ({
 });
 
 class PrimarySearchAppBar extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            anchorEl: null,
-            mobileMoreAnchorEl: null
-        }
-        this.getZip = this.getZip.bind(this)
-        // this.keyPress = this.bind.keyPress.bind(this)
-        // this.handleEnter = this.bind.handleEnter.bind(this)
-    }
-
-
-  getZip = (event) => {
-      event.preventDefault()
-      this.props.getZip()
+  constructor() {
+    super();
+    this.state = {
+      anchorEl: null,
+      mobileMoreAnchorEl: null
+    };
+    this.getZip = this.getZip.bind(this);
+    // this.keyPress = this.bind.keyPress.bind(this)
+    // this.handleEnter = this.bind.handleEnter.bind(this)
   }
 
-  keyPress = (event) => {
-    if(event.keyCode == 13){
-      event.preventDefault()
-      this.props.getZip()
+  getZip = event => {
+    event.preventDefault();
+    this.props.getZip();
+  };
+
+  keyPress = event => {
+    if (event.keyCode == 13) {
+      event.preventDefault();
+      this.props.getZip();
     }
-  }
+  };
 
   handleProfileMenuOpen = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -129,8 +128,6 @@ class PrimarySearchAppBar extends React.Component {
     this.setState({ mobileMoreAnchorEl: null });
   };
 
-
-
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
@@ -138,17 +135,17 @@ class PrimarySearchAppBar extends React.Component {
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
     const renderMenu = (
-  
-        <Menu
-          anchorEl={anchorEl}
-          anchorOrigin={{ vertical: "top", horizontal: "right" }}
-          transformOrigin={{ vertical: "top", horizontal: "right" }}
-          open={isMenuOpen}
-          onClose={this.handleMenuClose}>
-          <MenuItem><Link to="/userlist">Selections</Link></MenuItem>
-
-        </Menu>
-
+      <Menu
+        anchorEl={anchorEl}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        open={isMenuOpen}
+        onClose={this.handleMenuClose}
+      >
+        <MenuItem>
+          <Link to="/userlist">Selections</Link>
+        </MenuItem>
+      </Menu>
     );
 
     const renderMobileMenu = (
@@ -196,7 +193,7 @@ class PrimarySearchAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="fixed">
           <Toolbar>
-            <h1 id='logo'>Meet 'n Eat</h1>
+            <h1 id="logo">Meet 'n Eat</h1>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -211,18 +208,14 @@ class PrimarySearchAppBar extends React.Component {
                   input: classes.inputInput
                 }}
               />
-            
             </div>
-              <Button
-                color='secondary' 
-                onClick={this.getZip}>
-                LET'S MEET!
-              </Button>
+            <Button color="secondary" onClick={this.getZip}>
+              LET'S MEET!
+            </Button>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-             
-              <IconButton 
-                id='user-selections'
+              <IconButton
+                id="user-selections"
                 color="inherit"
                 aria-owns={isMenuOpen ? "material-appbar" : null}
                 aria-haspopup="true"
@@ -233,25 +226,25 @@ class PrimarySearchAppBar extends React.Component {
                   badgeContent={this.props.count}
                   color="secondary"
                 >
-                <AccountCircle />
+                  <AccountCircle />
                 </Badge>
               </IconButton>
-          
             </div>
             <div className={classes.sectionMobile}>
-              <IconButton color="inherit"
-                  aria-owns={isMenuOpen ? "material-appbar" : null}
-                  aria-haspopup="true"
-                  onClick={this.handleProfileMenuOpen}
+              <IconButton
+                color="inherit"
+                aria-owns={isMenuOpen ? "material-appbar" : null}
+                aria-haspopup="true"
+                onClick={this.handleProfileMenuOpen}
+              >
+                <Badge
+                  className={classes.margin}
+                  badgeContent={this.props.count}
+                  color="secondary"
                 >
-                  <Badge
-                    className={classes.margin}
-                    badgeContent={this.props.count}
-                    color="secondary"
-                  >
                   <AccountCircle />
-                  </Badge>
-                </IconButton>
+                </Badge>
+              </IconButton>
             </div>
           </Toolbar>
         </AppBar>

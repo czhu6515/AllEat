@@ -1,15 +1,8 @@
-#rest-list-wrapper {
-  width: 100vw;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-}
-
 #rest-wrapper {
+  margin-top: 10em;
   height: 25em;
   width: 39em;
+  /* background: pink; */
   display: flex;
 }
 
@@ -24,8 +17,7 @@
 
   #rest-wrapper {
     flex-direction: column;
-    height: 35.3em;
-    margin-top: 0;
+    height: 37.3em;
   }
 
   #checkboxes {
