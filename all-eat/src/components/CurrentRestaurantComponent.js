@@ -7,12 +7,7 @@ import { Grid } from "@material-ui/core";
 class CurrentRestaurantComponent extends Component {
   render() {
     return (
-      <Grid
-        alignItems={"center"}
-        direction={"column"}
-        justify={"space-between"}
-        color={"primary"}
-      >
+      <Grid>
         <Grid>
           <h1>{this.props.restaurantProp.name}</h1>
         </Grid>

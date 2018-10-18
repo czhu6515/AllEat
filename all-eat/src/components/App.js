@@ -42,6 +42,7 @@ class App extends Component {
     this.addElementToUserList = this.addElementToUserList.bind(this);
   }
 
+  // TODO:
   async changeNo(time, rId, boo) {
     let num = this.state.notifCounter;
     if (boo) {
@@ -76,6 +77,7 @@ class App extends Component {
     await this.setState({ timeslots: timeslots });
   }
 
+  //TODO:
   getZip = () => {
     let zip = document.getElementById("input-base").value;
     Geocode.setApiKey(`${GID}`);

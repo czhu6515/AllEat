@@ -16,9 +16,7 @@ class RestarantComponent extends Component {
       <div id="rest-wrapper">
         <div id="restaurant">
           <h2 id="rest-name">{myProps.restaurantProp.name}</h2>
-          <p style={{ color: "red" }} id="rest-address">
-            {myProps.restaurantProp.vicinity}
-          </p>
+          <p id="rest-address">{myProps.restaurantProp.vicinity}</p>
           <div id="rest-PR">
             <p id="rest-price">
               Price Level: {myProps.restaurantProp.price_level}

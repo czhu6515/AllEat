@@ -11,19 +11,21 @@
 }
 
 #rest-name {
-  color: red;
+  color: #5e07ff;
   margin: 0;
   padding: 0;
   margin-top: 10px;
 }
 
 #rest-address {
+  color: #5e07ff;
   margin: 0;
   padding-left: 2em;
 }
 
 #rest-PR {
   margin: 0;
+  color: #5e07ff;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -31,6 +33,7 @@
 
 #rest-price {
   margin: 0;
+  color: #5e07ff;
   display: flex;
   height: auto;
   width: 10em;
